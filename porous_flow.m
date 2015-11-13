@@ -2,10 +2,12 @@ clear;
 clf;
 % Model parameters (fixed)
 porosity = 0.1;  % Porosity of porous medium
-Re = 0.01;  % Reynolds number
+Re = 100.0;  % Reynolds number
 Da = 1e-5;  % Darcy number
 J = 1.0;  % Viscosity ratio
 tau = 0.8;  % Relaxation time
+% dx = 0.0316;  % Lattice spacing
+% dt = 0.001;  % Time step
 dx = 1.0;  % Lattice spacing
 dt = 1.0;  % Time step
 cs_sqr = dx * dx / dt / dt / 3.0;
@@ -15,11 +17,15 @@ H = 80;  % Height of domain
 
 % Derived parameters
 K = Da * H * H;  % Permeability
+solid_particle_diameter = sqrt(K * 150 * (1 - porosity) * (1 - porosity) /...
+    porosity / porosity / porosity);
 F_epsilon = 1.75 / sqrt(150 * porosity^3);  % Geometric function
 u0 = Re * nu / H;  % Peak velocity
 r = sqrt(nu * porosity / K / nu_e);
 % Error in paper?
 G = u0 * nu / K / (1 - 1 / cosh(r * H / 2));
+
+disp(solid_particle_diameter);
 
 % Simulation parameters
 h = 0.08;  % Space step
