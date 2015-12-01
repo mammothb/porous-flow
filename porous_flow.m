@@ -58,3 +58,4 @@ while is_unsteady
 end
 fprintf('Iterations: %d\n', iterations);
 plot (y, u ./ u0);
+dlmwrite('data.dat', [u' ./ u0], 'delimiter', ' ');
