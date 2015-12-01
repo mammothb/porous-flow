@@ -2,14 +2,14 @@ clear;
 clf;
 % Model parameters (fixed)
 porosity = 0.1;  % Porosity of porous medium
-Re = 100.0;  % Reynolds number
+Re = 0.01;  % Reynolds number
 Da = 1e-5;  % Darcy number
 J = 1.0;  % Viscosity ratio
 tau = 0.8;  % Relaxation time
-% dx = 0.0316;  % Lattice spacing
-% dt = 0.001;  % Time step
-dx = 1.0;  % Lattice spacing
-dt = 1.0;  % Time step
+dx = 0.1;  % Lattice spacing
+dt = 0.01;  % Time step
+% dx = 1.0;  % Lattice spacing
+% dt = 1.0;  % Time step
 cs_sqr = dx * dx / dt / dt / 3.0;
 nu = (tau - 0.5) * cs_sqr * dt;  % Kinematic viscosity
 nu_e = J * nu;  % Effective parameter
